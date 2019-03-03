@@ -18,6 +18,6 @@ How to add files and give updates:
 1.Open Terminal
 2.$cd /yourpath/HITK-SEM04
 3.Make any changes you want i.e add/move files
-3.$git add.
+3.$git add .
 4.$git commit -m "your message"
 5.$git push origin master
