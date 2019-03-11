@@ -29,53 +29,14 @@ void main()
         }
         printf("\n");
     }
+
+	float p = (x - a[0][0] )/ (a[1][0]-a[0][0]);
+	float yp=a[0][1];
+	float k=1;
+	for(j=2;j<=n;j++)
+	{
+		k=k*(p+2-j)/(j-1);
+		yp+=k*a[0][j];
+	}
+	printf("Final ans f(%f) is %f\n",p,yp);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*#include <stdio.h>
-int main()
-{
-	
-}*/
