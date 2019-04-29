@@ -9,12 +9,12 @@ int cutRod(int price[], int n,int s[])
    for (i=1;i<=n;i++) 
    {
        int max_val=INT_MIN; 
-       for (j=0;j<i;j++) 
+       for (j=1;j<=i;j++) 
 	   {
-			if(max_val<price[j]+val[i-j-1])
+			if(max_val<price[j]+val[i-j])
 			{
-				max_val=price[j]+val[i-j-1]; 
-		 		s[i]=j+1;
+				max_val=price[j]+val[i-j]; 
+		 		s[i]=j;
 			}
 	   }
        val[i]=max_val;
@@ -33,11 +33,11 @@ void print_sol(int s[],int n)
 }
 int main() 
 { 
-    int arr[] = {2, 5, 8, 9, 10, 17, 17, 20},i; 
-	int arr1[] = {1,5,8,10,13,17,18,22,25,30};
+    int arr[] = {0,2, 5, 8, 9, 10, 17, 17, 20},i; 
+	int arr1[] = {0,1,5,8,10,13,17,18,22,25,30};
 	int size = sizeof(arr)/sizeof(arr[0]); 
 	printf("\n\n***********\tSolution For 1st Rod \t***********\n");
-	for(i=1;i<=size;i++)
+	for(i=1;i<size;i++)
 	{
 		int s[i];
 		printf("For Length : %d\n",i);
@@ -46,7 +46,7 @@ int main()
 	}  
 	printf("\n\n***********\tSolution For 2nd Rod \t***********\n");
 	size = sizeof(arr1)/sizeof(arr1[0]);
-	for(i=1;i<=size;i++)
+	for(i=1;i<size;i++)
 	{
 		int s[i];
 		printf("For Length : %d\n",i);
