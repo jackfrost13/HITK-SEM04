@@ -3,9 +3,10 @@
 void main()
 {
     int n,i,j;
-    float x,a[10][10];
+    float x;
     printf("enter the no of values\n");
     scanf("%d",&n);
+	float a[n][n+1];
     printf("enter the point to be interpolated\n");
     scanf("%f",&x);
     printf("enter the datapoints in the form (x,f(x))\n");
