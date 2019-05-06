@@ -19,7 +19,7 @@ void main()
     printf("\nthe matrix\n");
     for(i=0;i<n;i++)
     {
-        for(j=0;j<n+1;j++)
+        for(j=0;j<=i+1;j++)
             printf("%0.3lf\t",a[i][j]);
         printf("\n");
     }
