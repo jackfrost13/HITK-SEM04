@@ -7,7 +7,8 @@ int main()
 	scanf("%d",&n);
 	double x[n];
 	double fx[n];
-	int i,j;double x0;
+	int i,j;
+	double x0;
 	double ans=0.0;
 	for(i=0;i<n;i++)
 	{
@@ -18,15 +19,11 @@ int main()
 	scanf("%lf",&x0);
 	for(i=0;i<n;i++)
 	{
-		double a=1;
-	
+		double a=fx[i];
 		for(j=0;j<n;j++)
-		{
-			if(j==i)
-			continue;
-			a=a*((double)(x0-x[j])/(x[i]-x[j]));
-		}
-		ans=ans+ a*fx[i];
+			if(j!=i)
+				a=a*((double)(x0-x[j])/(x[i]-x[j]));
+		ans=ans+a;
 	}
 	printf("Answer is %lf\n",ans);
 }
