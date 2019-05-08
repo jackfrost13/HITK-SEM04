@@ -2,22 +2,24 @@
 #include <stdlib.h>
 #include <math.h>
 #define e 0.001
-#define f(x,y) ((x)*(y))
+float dydx(float x, float y) 
+{ 
+    return ((float)((y*y)-(x*x))/(float)((y*y)+(x*x))); 
+} 
 int main()
 {
 	double x,y,h,xf,y1,y2;
 	printf("Enter x0 and y0 :");
 	scanf("%lf%lf",&x,&y);
-	printf("Enter h :");
-	scanf("%lf",&h);
 	printf("Enter the final value of x :");
 	scanf("%lf",&xf);
+	h=(float)(xf-x)/100.0;
 	do
 	{
-		y1=y+h*f(x,y);
+		y1=y+h*dydx(x,y);
 		do{
 			y2=y1;
-			y1=y + h/2*(f(x,y)+f(x+h,y2));
+			y1=y + h/2*(dydx(x,y)+dydx(x+h,y2));
 			printf("Modified ym(%lf) = %lf\n",x,y1);
 		}while(fabs(y2-y1)>0.00001);
 		x+=h;
