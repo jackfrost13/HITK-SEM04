@@ -26,9 +26,8 @@ void print_Coin(int R[],int m,int n,int S[])
 		printf("Coins used to form total ");
         while(start!=0) 
 		{
-            int j = R[start];
-            printf("%d +  ",S[j]);
-            start = start - S[j];
+            printf("%d +  ",S[R[start]]);
+            start = start - S[R[start]];
         }
         printf("\n");
 }

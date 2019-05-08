@@ -1,42 +1,47 @@
-#include <stdio.h>
-  int main() {
-    int n, i, j, k;
-    float a[50][50], x[50], d, sum = 0.0;
-    printf("\nEnter the no. of unknowns:");
-    scanf("%d", & n);
-    printf("\nEnter the value of augmented matrix: ");
-    for (i = 1; i <= n; i++) {
-      for (j = 1; j <= (n + 1); j++)
-        scanf("%f", & a[i][j]);
+#include<stdio.h>
+int main()
+{
+    int i,j,k,n;
+    float A[20][20],c,x[10],sum=0.0;
+    printf("\nEnter the order of matrix: ");
+    scanf("%d",&n);
+    printf("\nEnter the elements of augmented matrix row-wise:\n\n");
+    for(i=1; i<=n; i++)
+    {
+        for(j=1; j<=(n+1); j++)
+        {
+            printf("A[%d][%d] : ", i,j);
+            scanf("%f",&A[i][j]);
+        }
     }
-    printf("\nAugmented matrix : ");
-    for (i = 1; i <= n; i++) {
-      printf(" \n");
-      for (j = 1; j <= (n + 1); j++)
-        printf(" %f", a[i][j]);
+    for(j=1; j<=n; j++) /* loop for the generation of upper triangular matrix*/
+    {
+        for(i=1; i<=n; i++)
+        {
+            if(i>j)
+            {
+                c=A[i][j]/A[j][j];
+                for(k=1; k<=n+1; k++)
+                {
+                    A[i][k]=A[i][k]-c*A[j][k];
+                }
+            }
+        }
     }
-    for (k = 1; k <= (n - 1); k++) {
-      for (i = (k + 1); i <= n; i++) {
-        d = a[i][k] / a[k][k];
-        for (j = 1; j <= (n + 1); j++)
-          a[i][j] = a[i][j] - (d * a[k][j]);
-      }
+    x[n]=A[n][n+1]/A[n][n];
+    for(i=n-1; i>=1; i--)
+    {
+        sum=0;
+        for(j=i+1; j<=n; j++)
+        {
+            sum=sum+A[i][j]*x[j];
+        }
+        x[i]=(A[i][n+1]-sum)/A[i][i];
     }
-    printf(" \nUpper triangular matrix: ");
-    for (i = 1; i <= n; i++) {
-      printf("\n");
-      for (j = 1; j <= (n + 1); j++)
-        printf(" %f", a[i][j]);
+    printf("\nThe solution is: \n");
+    for(i=1; i<=n; i++)
+    {
+        printf("\nx%d=%f\t",i,x[i]); /* x1, x2, x3 are the required solutions*/
     }
-    x[n] = a[n][n + 1] / a[n][n];
-    printf(" \n%f was unknown no. %d", x[n], n);
-    for (i = (n - 1); i >= 1; i--) {
-      for (j = (i + 1); j <= n; j++) {
-        sum = sum + (a[i][j] * x[j]);
-      }
-
-      x[i] = (a[i][n + 1] - sum) / a[i][i];
-      sum = 0.0;
-      printf("\n%f was unknown no.%d", x[i], i);
-    }
-  }
+    return(0);
+}
